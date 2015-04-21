@@ -157,8 +157,8 @@ public class Weather extends ActionBarActivity {
     {
         try
         {
-            String name = parser.getName();
-            int eventType = parser.getEventType();
+            String name;
+            int eventType;
             parser.nextTag();
             skip(parser);
             parser.nextTag();
@@ -177,11 +177,11 @@ public class Weather extends ActionBarActivity {
                 switch(name)
                 {
                     case "area-description":
-                        eventType = parser.next();
+                        parser.next();
                         weather.put("location", parser.getText());
                         break;
                     case "start-valid-time":
-                        eventType = parser.next();
+                        parser.next();
                         weather.put("time", parser.getText());
                         break;
                     case "weather-conditions":
@@ -201,16 +201,16 @@ public class Weather extends ActionBarActivity {
                             parser.next();
                             weather.put("dew", parser.getText());
                         }
-                        eventType = parser.getEventType();
+                        parser.getEventType();
                         break;
                     case "humidity":
                         parser.nextTag();
-                        eventType = parser.next();
+                        parser.next();
                         weather.put("humidity", parser.getText());
                         break;
                     case "direction":
                         parser.nextTag();
-                        eventType = parser.next();
+                        parser.next();
                         double deg = Double.parseDouble(parser.getText());
                         String [] dirs= {"N", "NE", "E", "SE", "S", "SW", "W", "NW"};
                         String dir = dirs[Math.round((float)(deg/45) % 6)];
@@ -218,7 +218,7 @@ public class Weather extends ActionBarActivity {
                         break;
                     case "pressure":
                         parser.nextTag();
-                        eventType = parser.next();
+                        parser.next();
                         weather.put("pressure", parser.getText());
                         break;
                     case "wind-speed":
@@ -228,7 +228,7 @@ public class Weather extends ActionBarActivity {
                             parser.next();
                             try
                             {
-                                double d = Double.parseDouble(parser.getText());
+                                Double.parseDouble(parser.getText());
                                 weather.put("gust", parser.getText());
                             }
                             catch(NumberFormatException ex)
@@ -240,10 +240,10 @@ public class Weather extends ActionBarActivity {
                             parser.next();
                             weather.put("wind", parser.getText());
                         }
-                        eventType = parser.getEventType();
+                        parser.getEventType();
                         break;
                     case "visibility":
-                        eventType = parser.next();
+                        parser.next();
                         weather.put("visibility", parser.getText());
                         break;
                 }
