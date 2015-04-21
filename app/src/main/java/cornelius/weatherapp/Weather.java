@@ -1,5 +1,12 @@
-package cornelius.weatherapp;
+/*
+	Authors: Cornelius Donley & Tessa O.
+	File: Weather.java
+	Description: Basic offline weather app that
+		parses XML files saved from weather.gov
+	Date: 4/20/2015
+*/
 
+package cornelius.weatherapp;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -22,7 +29,6 @@ import java.io.InputStream;
 import java.text.NumberFormat;
 import java.util.HashMap;
 import java.util.Map;
-
 
 public class Weather extends ActionBarActivity {
 
