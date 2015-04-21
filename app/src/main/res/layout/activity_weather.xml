@@ -1,221 +1,230 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".Weather">
+    tools:context=".Weather">
 
     <LinearLayout
-        android:orientation="vertical"
+        android:id="@+id/layout"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:weightSum="1"
-        android:id="@+id/layout">
+        android:orientation="vertical"
+        android:weightSum="1">
 
         <LinearLayout
-            android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_weight="0.03">
+            android:layout_weight="0.03"
+            android:orientation="horizontal">
 
             <TextView
+                android:id="@+id/zipCodeLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Zip Code:"
-                android:id="@+id/zipCodeLabel"
                 android:textSize="16dp" />
 
             <EditText
+                android:id="@+id/zipCode"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
-                android:inputType="number"
-                android:maxLength="5"
-                android:ems="10"
-                android:id="@+id/zipCode"
-                android:layout_alignParentTop="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
-                android:layout_marginLeft="10dp" />
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="10dp"
+                android:ems="10"
+                android:inputType="number"
+                android:maxLength="5"/>
 
             <Button
+                android:id="@+id/goButton"
                 android:layout_width="64dp"
                 android:layout_height="36dp"
-                android:text="GO"
-                android:id="@+id/goButton"
-                android:layout_marginLeft="10dp" />
+                android:layout_marginLeft="10dp"
+                android:text="GO"/>
         </LinearLayout>
 
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center_horizontal"
+            android:orientation="vertical"
             android:weightSum="1">
 
             <LinearLayout
-                android:orientation="horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="left"
+                android:orientation="horizontal"
                 android:weightSum="1">
 
                 <TextView
+                    android:id="@+id/currentLocation"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Current Location: "
-                    android:id="@+id/currentLocation"
                     android:textSize="12dp" />
                 <TextView
+                    android:id="@+id/location"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text=" "
-                    android:id="@+id/location"
                     android:textSize="12dp" />
             </LinearLayout>
 
             <LinearLayout
-                android:orientation="horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="left"
+                android:orientation="horizontal"
                 android:weightSum="1">
 
                 <TextView
+                    android:id="@+id/currentTime"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Current Time: "
-                    android:id="@+id/currentTime"
                     android:textSize="12dp" />
                 <TextView
+                    android:id="@+id/time"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text=" "
-                    android:id="@+id/time"
                     android:textSize="12dp" />
             </LinearLayout>
 
             <ImageView
+                android:id="@+id/picture"
                 android:layout_width="201dp"
                 android:layout_height="141dp"
-                android:id="@+id/picture"
                 android:layout_gravity="center_horizontal"
                 android:layout_weight="0.12" />
 
             <LinearLayout
-                android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:gravity="center"
+                android:orientation="horizontal"
                 android:weightSum="1">
 
                 <TextView
+                    android:id="@+id/currentConditionsLabel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Current Conditions: "
-                    android:id="@+id/currentConditionsLabel"
                     android:layout_gravity="center_horizontal"
+                    android:text="Current Conditions: "
                     android:textSize="14dp" />
                 <TextView
+                    android:id="@+id/conditions"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text=" "
-                    android:id="@+id/conditions"
                     android:layout_gravity="center_horizontal"
+                    android:text=" "
                     android:textSize="14dp" />
             </LinearLayout>
 
             <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
+                android:orientation="horizontal"
                 android:weightSum="1">
 
-                <RadioButton
+                <RadioGroup
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Metric"
-                    android:id="@+id/metricButton"
-                    android:checked="false"
-                    android:clickable="true"
-                    android:textSize="16dp" />
+                    android:layout_gravity="center_horizontal"
+                    android:orientation="horizontal">
 
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Imperial"
-                    android:id="@+id/imperialButton"
-                    android:checked="true"
-                    android:clickable="true"
-                    android:textSize="16dp" />
+                    <RadioButton
+                        android:id="@+id/metricButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="false"
+                        android:clickable="false"
+                        android:text="Metric"
+                        android:textSize="16dp"/>
+
+                    <RadioButton
+                        android:id="@+id/imperialButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:clickable="false"
+                        android:text="Imperial"
+                        android:textSize="16dp"/>
+                </RadioGroup>
             </LinearLayout>
 
             <TableLayout
                 android:layout_width="match_parent"
                 android:layout_height="250dp"
                 android:layout_gravity="center_horizontal"
-                android:layout_weight="1.18"
-                android:layout_marginTop="5dp">
+                android:layout_marginTop="5dp"
+                android:layout_weight="1.18">
 
                 <TableRow
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent">
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text="Temperature"
                         android:id="@+id/temperatureLabel"
-                        android:layout_marginTop="5dp"
-                        android:layout_column="0"
-                        android:textStyle="bold"
-                        android:textSize="14dp" />
-
-                    <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_column="0"
+                        android:layout_marginTop="5dp"
+                        android:text="Temperature"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text="Visibility"
+                        android:textSize="14dp"
+                        android:textStyle="bold"/>
+
+                    <TextView
                         android:id="@+id/visLabel"
+                        style="bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_column="0"
                         android:layout_marginLeft="70dp"
                         android:layout_marginTop="5dp"
-                        style="bold"
-                        android:textStyle="bold"
-                        android:textSize="14dp" />
+                        android:text="Visibility"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textSize="14dp"
+                        android:textStyle="bold"/>
                 </TableRow>
 
                 <TableRow
+                    android:id="@+id/visibility"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:orientation="vertical"
-                    android:id="@+id/visibility">
+                    android:orientation="vertical">
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text=" "
                         android:id="@+id/temperature"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_column="0"
                         android:layout_marginTop="5dp"
+                        android:text=" "
+                        android:textAppearance="?android:attr/textAppearanceMedium"
                         android:textSize="14dp" />
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text=" "
                         android:id="@+id/textView12"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_column="1"
                         android:layout_marginLeft="70dp"
                         android:layout_marginTop="5dp"
+                        android:text=" "
+                        android:textAppearance="?android:attr/textAppearanceMedium"
                         android:textSize="14dp" />
                 </TableRow>
 
@@ -224,28 +233,28 @@
                     android:layout_height="fill_parent">
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text="Dew Point Temp"
                         android:id="@+id/dewLabel"
-                        android:layout_column="0"
-                        android:layout_marginTop="5dp"
-                        android:textStyle="bold"
-                        android:textSize="14dp" />
-
-                    <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_column="0"
+                        android:layout_marginTop="5dp"
+                        android:text="Dew Point Temp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text="Wind Speed"
+                        android:textSize="14dp"
+                        android:textStyle="bold"/>
+
+                    <TextView
                         android:id="@+id/windspeedLabel"
+                        style="bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_column="1"
                         android:layout_marginLeft="70dp"
                         android:layout_marginTop="5dp"
-                        style="bold"
-                        android:textStyle="bold"
-                        android:textSize="14dp" />
+                        android:text="Wind Speed"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textSize="14dp"
+                        android:textStyle="bold"/>
                 </TableRow>
 
                 <TableRow
@@ -253,55 +262,55 @@
                     android:layout_height="fill_parent">
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text=" "
                         android:id="@+id/dew"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_column="0"
                         android:layout_marginTop="5dp"
+                        android:text=" "
+                        android:textAppearance="?android:attr/textAppearanceMedium"
                         android:textSize="14dp" />
 
                     <TextView
+                        android:id="@+id/windspeed"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text=" "
-                        android:id="@+id/windspeed"
                         android:layout_column="1"
                         android:layout_marginLeft="70dp"
                         android:layout_marginTop="5dp"
+                        android:text=" "
+                        android:textAppearance="?android:attr/textAppearanceMedium"
                         android:textSize="14dp" />
                 </TableRow>
 
                 <TableRow
+                    style="bold"
                     android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    style="bold">
+                    android:layout_height="fill_parent">
 
                     <TextView
+                        android:id="@+id/humidLabel"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text="Humidity"
-                        android:id="@+id/humidLabel"
                         android:layout_column="0"
                         android:layout_marginTop="5dp"
-                        android:textStyle="bold"
-                        android:textSize="14dp" />
+                        android:text="Humidity"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textSize="14dp"
+                        android:textStyle="bold"/>
 
                     <TextView
+                        android:id="@+id/gustsLabel"
+                        style="bold"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text="Gusts"
-                        android:id="@+id/gustsLabel"
                         android:layout_column="1"
                         android:layout_marginLeft="70dp"
                         android:layout_marginTop="5dp"
-                        style="bold"
-                        android:textStyle="bold"
-                        android:textSize="14dp" />
+                        android:text="Gusts"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textSize="14dp"
+                        android:textStyle="bold"/>
                 </TableRow>
 
                 <TableRow
@@ -309,24 +318,24 @@
                     android:layout_height="fill_parent">
 
                     <TextView
+                        android:id="@+id/humid"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text=" "
-                        android:id="@+id/humid"
                         android:layout_column="0"
                         android:layout_marginTop="5dp"
+                        android:text=" "
+                        android:textAppearance="?android:attr/textAppearanceMedium"
                         android:textSize="14dp" />
 
                     <TextView
+                        android:id="@+id/gusts"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text=" "
-                        android:id="@+id/gusts"
                         android:layout_column="1"
                         android:layout_marginLeft="70dp"
                         android:layout_marginTop="5dp"
+                        android:text=" "
+                        android:textAppearance="?android:attr/textAppearanceMedium"
                         android:textSize="14dp" />
                 </TableRow>
 
@@ -336,16 +345,16 @@
                     android:layout_marginTop="5dp">
 
                     <TextView
+                        android:id="@+id/pressureLabel"
+                        style="bold"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text="Pressure"
-                        android:id="@+id/pressureLabel"
                         android:layout_column="0"
                         android:layout_marginTop="5dp"
-                        style="bold"
-                        android:textStyle="bold"
-                        android:textSize="14dp" />
+                        android:text="Pressure"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textSize="14dp"
+                        android:textStyle="bold"/>
                 </TableRow>
 
                 <TableRow
@@ -353,13 +362,13 @@
                     android:layout_height="fill_parent">
 
                     <TextView
+                        android:id="@+id/pressure"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:text=" "
-                        android:id="@+id/pressure"
                         android:layout_column="0"
                         android:layout_marginTop="5dp"
+                        android:text=" "
+                        android:textAppearance="?android:attr/textAppearanceMedium"
                         android:textSize="14dp" />
                 </TableRow>
             </TableLayout>

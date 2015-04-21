@@ -27,6 +27,8 @@ import java.util.Map;
 public class Weather extends ActionBarActivity {
 
     Map weather = new HashMap<String, String>();
+    RadioButton metric;
+    RadioButton imperial;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,15 +43,14 @@ public class Weather extends ActionBarActivity {
 
         final EditText zip = (EditText)findViewById(R.id.zipCode);
         final Button btn = (Button)findViewById(R.id.goButton);
-        final RadioButton metric = (RadioButton)findViewById(R.id.metricButton);
-        final RadioButton imperial = (RadioButton)findViewById(R.id.imperialButton);
+        metric = (RadioButton) findViewById(R.id.metricButton);
+        imperial = (RadioButton) findViewById(R.id.imperialButton);
 
         btn.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
             {
-
                 try
                 {
                     XmlPullParserFactory pullParserFactory;
@@ -74,8 +75,7 @@ public class Weather extends ActionBarActivity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked)
             {
-                imperial.setChecked(false);
-                metric();
+                imperial();
             }
         });
 
@@ -84,8 +84,7 @@ public class Weather extends ActionBarActivity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked)
             {
-                metric.setChecked(false);
-                imperial();
+                metric();
             }
         });
     }
@@ -135,12 +134,23 @@ public class Weather extends ActionBarActivity {
         final TextView conditions = (TextView)findViewById(R.id.currentConditionsLabel);
         final TextView humidity = (TextView)findViewById(R.id.humid);
 
-        image.setImageDrawable(getDrawable(R.drawable.overcast));
+        if (weather.get("conditions").toString().equals("Fair"))
+            image.setImageDrawable(getDrawable(R.drawable.fair));
+        if (weather.get("conditions").toString().equals("Mostly Cloudy"))
+            image.setImageDrawable(getDrawable(R.drawable.mostlycloudynight));
+        if (weather.get("conditions").toString().equals("Overcast"))
+            image.setImageDrawable(getDrawable(R.drawable.overcast));
+        if (weather.get("conditions").toString().equals(" Heavy Rain Fog/Mist"))
+            image.setImageDrawable(getDrawable(R.drawable.rain));
         location.setText(weather.get("location").toString());
         time.setText(weather.get("time").toString());
-        conditions.append(weather.get("conditions").toString());
+        conditions.setText(weather.get("conditions").toString());
         humidity.setText(weather.get("humidity").toString() + "%");
-        imperial();
+
+        imperial.setClickable(true);
+        metric.setClickable(true);
+        if (imperial.isChecked()) imperial();
+        else metric();
     }
 
     private Map parseXML(XmlPullParser parser)
